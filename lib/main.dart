@@ -1,180 +1,189 @@
+import 'dart:html';
+
+
 import 'package:flutter/material.dart';
 
+
 void main(){
-  runApp(MyApp());
+  runApp(myapp());
 }
-class MyApp extends StatelessWidget{
+
+
+class myapp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/createaccount',
-      routes:{'/createaccount': (context) =>CreateAccountPage(), '/password': (context) =>PasswordPage()/* '/password': (context) =>PasswordPage(), '/login': (context) =>LoginPage()*/},
-    );
+      home: HomePage(),);
   }
 }
-class CreateAccountPage extends StatelessWidget{
+
+
+class HomePage extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 18, 187, 238),
-      ),
-      backgroundColor: Color.fromARGB(255, 229, 231, 231),
-      body:Center(
-          child: Column(
-            children:<Widget> [
-              
-              
-              Container(
-                padding: EdgeInsets.all(10),
-                alignment: Alignment.topCenter,
-                color: Color.fromARGB(255, 18, 187, 238),
-                height: 200,
-                width: 2000,
-                child: Text('Crie uma nova conta', style: TextStyle(fontSize: 64, color: Color.fromARGB(1000, 255, 255, 255) )),
-                
-                
+      backgroundColor: Color.fromARGB(255, 6, 145, 183),
+        body:Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            
+            Image.asset("imagens/Aviao (1).jpeg", height: 400, width: 1000,),
+            
+            Text("Login", style: TextStyle(fontSize: 48, color: Colors.white, fontWeight: FontWeight.bold),),
+            Text("faça login para continuar!",style: TextStyle(fontSize: 20, color: Colors.white),),
+            SizedBox(height: 20),
+            Container(
+              height: 50,
+              width: 200,
+              child: TextFormField(decoration: InputDecoration(labelText: "NOME", border: OutlineInputBorder(), fillColor: Colors.white, filled: true),)
               ),
-              Container(
-                padding: EdgeInsets.all(0),
-                alignment: Alignment.topCenter,
-                color: Color.fromARGB(255, 18, 187, 238),
-                height: 30,
-                width: 2000,
-                child: Text('xxxxxxxxxxxxxxxxxxxxxxxxxx', style: TextStyle(fontSize: 12, color: Color.fromARGB(1000, 255, 255, 255), height: 1 )),
-                
-                
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),),
-              
-              TextField(
-                autofocus: true,
-                keyboardType: TextInputType.name,
-                style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255), fontSize: 20),
-                decoration: InputDecoration(
-                    labelText: "Nome",
-                    labelStyle: TextStyle(color: const Color.fromARGB(255, 18, 187, 238)),
-
-                ),
-              ),
-              TextField(
-                autofocus: true,
-                keyboardType: TextInputType.emailAddress,
-                style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255), fontSize: 20),
-                decoration: InputDecoration(
-                    labelText: "Email",
-                    labelStyle: TextStyle(color: const Color.fromARGB(255, 18, 187, 238))
-
-              ),
-              ),
-              TextField(
-                autofocus: true,
-                keyboardType: TextInputType.visiblePassword,
-                style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255), fontSize: 20),
-                decoration: InputDecoration(
-                    labelText: "Senha",
-                    labelStyle: TextStyle(color: const Color.fromARGB(255, 18, 187, 238))
-              ),
-              ),
-              TextField(
-                autofocus: true,
-                keyboardType: TextInputType.number,
-                style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255), fontSize: 20),
-                decoration: InputDecoration(
-                    labelText: "Data de Aniversario",
-                    labelStyle: TextStyle(color: const Color.fromARGB(255, 18, 187, 238)),
-                    
-              ),),  
-
-              SizedBox(height: 180),
-              
-              Container(
-                padding: EdgeInsets.all(50),
-                child: ElevatedButton(
-                onPressed:(){
-                Navigator.pushNamed(context, '//password');
-                },
-              
-                child: Container(
-                  width: double.infinity,
-                  height: 50,
-                  child: Center(
-                    child: Text(
-                    'ENTRAR'
-                    ),
-                  )
-                )
-                ),
-
-                color: Color.fromARGB(255, 241, 227, 26),
-                height: 160,
-                width: 2000,
-                alignment: Alignment.bottomRight,
-                
-                
-              ),
-              
-            ],
-              ),
-              
-          
-          ),
+            
+            Container(
+              height: 50,
+              width: 200,
+              child: TextFormField(decoration: InputDecoration(labelText: "SENHA", border: OutlineInputBorder(),filled: true, fillColor: Colors.white),obscureText: true,),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+                style: ButtonStyle(
+                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 30, fontWeight: FontWeight.w900)),
+                  backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 255, 230, 0)),
+                  foregroundColor: MaterialStateProperty.all(Color.fromARGB(255, 6, 145, 183)),
+                  elevation: MaterialStateProperty.all(6),
+                  padding: MaterialStateProperty.all(EdgeInsets.all(15)),
+                  minimumSize: MaterialStateProperty.all(Size(200, 20)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
+                  ),
+                ),),
+                onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> SecondPage()));},
+                child: Text('LOGIN', style: TextStyle(color: Colors.white),), ),
+           
+          ],) ,
+       
         );
-      
-  }
-}
-class PasswordPage extends StatelessWidget{
+        }}
+
+
+class SecondPage extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Color.fromARGB(200, 150, 150, 150),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child:Center(
+      backgroundColor: Color.fromARGB(255, 6, 145, 183),
+      appBar: AppBar(
+        title: Text(""),
+        backgroundColor: Color.fromARGB(255, 6, 145, 183)),
+        body: Padding(padding: EdgeInsets.all(0.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+        
+        children: <Widget>[
+          
+          SizedBox(height: 20),
+          Title(color: Colors.white, child: Text("Crie uma nova conta", style: TextStyle(fontSize: 54, color: Colors.white,fontWeight: FontWeight.bold),)),
+          Text("Ainda não tem uma conta? click aqui!",style: TextStyle(fontSize: 24, color: Colors.white),),
+          SizedBox(height: 30,),
+          Container( color: Colors.white, height: 597, width: 2000,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:<Widget> [
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 80,),
               Container(
-                height: 400,
-                width: 1850,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      'imagens/Aviao (1).jpeg',
-                      width: 500,
-                      height: 500,
-                    )
-                  ],
-                )
-              )
-            ],
-          ),
-        )
-      ),
-    );
+                height: 50,
+              width: 300,
+                child: TextFormField(decoration: InputDecoration(labelText: "NOME", border: OutlineInputBorder(),filled: true, fillColor: Colors.white ),),
+              ),
+              SizedBox(height: 20,),
+              Container(
+                height: 50,
+              width: 300,
+                child: TextFormField(decoration: InputDecoration(labelText: "EMAIL", border: OutlineInputBorder(),filled: true, fillColor: Colors.white ),),
+              ),
+              SizedBox(height: 20,),
+              Container(
+                height: 50,
+              width: 300,
+                child: TextFormField(decoration: InputDecoration(labelText: "SENHA", border: OutlineInputBorder(),filled: true, fillColor: Colors.white ),obscureText: true,),
+              ),
+              SizedBox(height: 20,),
+              Container(
+                height: 50,
+              width: 300,
+                child: TextFormField(decoration: InputDecoration(labelText: "DATA DE ANIVERSARIO", border: OutlineInputBorder(),filled: true, fillColor: Colors.white ),),
+              ),
+              SizedBox(height: 40),
+              ElevatedButton(
+                style: ButtonStyle(
+                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+                  backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 255, 230, 0)),
+                  foregroundColor: MaterialStateProperty.all(Color.fromARGB(255, 33, 187, 243)),
+                  elevation: MaterialStateProperty.all(6),
+                  padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                  minimumSize: MaterialStateProperty.all(Size(200, 20)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  ),
+                ),
+                onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> TPage()));},
+                child: Text('SIGN UP', style: TextStyle(color: Colors.white),), ),
+            ]
+           
+
+
+         
+          ),)
+        ],),));
   }
 }
-class LoginPage extends StatelessWidget{
-  Widget build(BuildContext context){
+
+
+class TPage extends StatelessWidget{
+  Widget build(BuildContext){
     return Scaffold(
-      backgroundColor: Color.fromARGB(200, 150, 150, 150),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child:Center(
+      backgroundColor: Color.fromARGB(255, 6, 145, 183),
+      appBar: AppBar(
+        title: Text(""), backgroundColor: Color.fromARGB(255, 6, 145, 183),),
+        body: Padding(padding: EdgeInsets.all(0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Title(color: Colors.white, child: Text("Esqueceu a senha?", style: TextStyle(fontSize: 54, color: Colors.white,fontWeight: FontWeight.bold),)),
+          Text("Nova senha",style: TextStyle(fontSize: 24, color: Colors.white),),
+          SizedBox(height: 100,),
+          Container( color: Colors.white, height: 643, width: 2000,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:<Widget> [
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 40,),
+              Image.asset("imagens/cadeado.jpeg", height: 240, width: 240,),
+              SizedBox(height: 40,),
               Container(
-                height: 400,
-                width: 1850,
-              )
-            ],
-          ),
-        )
-      ),
-    );
-  }
-}
+                width: 500,
+                color: Colors.white,
+                child: Text("Digite seu e-mail, telefone ou nome de usuário e enviaremos um link para alterar uma nova senha", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),),
+              ),
+              SizedBox(height: 40,),
+              Container(
+                width: 400,
+                child: TextFormField(decoration: InputDecoration(labelText: "email", border: OutlineInputBorder(),filled: true, fillColor: Colors.white ),),
+              ),
+              SizedBox(height: 40),
+              ElevatedButton(
+                style: ButtonStyle(
+                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+                  backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 254, 237, 80)),
+                  foregroundColor: MaterialStateProperty.all(Color.fromARGB(255, 6, 145, 183)),
+                  elevation: MaterialStateProperty.all(6),
+                  padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                  minimumSize: MaterialStateProperty.all(Size(200, 20)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
+                ),
+                onPressed: (){},
+                child: Text('ENVIAR', style: TextStyle(color: Colors.white),), ),
+            ]
+           
+
+
+         
+          ),)
+        ],),));
+  }}
